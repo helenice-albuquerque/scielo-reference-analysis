@@ -5,9 +5,6 @@ Este projeto coleta 32 artigos de revisão sistemática do domínio biomédico a
 
 ## Scripts
 
-### `baixar_xmls.py`
-Lê os DOIs do Excel e tenta baixar o XML de cada artigo via API do SciELO Articlemeta. Primeira versão, sem retry em caso de falha.
-
 ### `baixar2_xmls.py`
 Versão melhorada. Adiciona 3 tentativas por artigo e pula arquivos já baixados, evitando downloads duplicados.
 
