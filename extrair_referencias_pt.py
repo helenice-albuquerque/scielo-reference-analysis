@@ -35,6 +35,11 @@ for arquivo in sorted(os.listdir("xmls")):
                     refs.append((elem, texto))
 
     for elem, texto in refs:
+
+        print("ELEM:", ET.tostring(elem, encoding='unicode'))
+        print("TEXTO:", texto)
+        print("---")
+
         ref_lower = texto.lower()
 
         # detecta português
