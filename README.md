@@ -17,9 +17,6 @@ Analisa os XMLs e contabiliza as referências em português, inglês e outros id
 ### `extrair_referencias_pt.py`
 Extrai as referências em português, recupera seus títulos e gera `referencias_pt.xlsx`.
 
-### `pdf_to_txt.py`
-Converte os documentos PDF para arquivos TXT.
-
 ### `bm25.py`
 Calcula a similaridade entre os documentos utilizando TF-IDF e BM25, gerando rankings para análise.
 
