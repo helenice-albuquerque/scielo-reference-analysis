@@ -1,35 +1,36 @@
-# SciELO Reference Analysis
+# Corpus Biomédico em Português — SciELO
 
-This repository contains Python scripts for constructing a Portuguese biomedical corpus from SciELO systematic reviews.
+Coleta e organização de revisões sistemáticas biomédicas em português para construção de um corpus voltado a modelos de linguagem.
 
-## Workflow
+## Descrição
 
-- Download XML metadata from SciELO.
-- Analyze the language of bibliographic references.
-- Extract references written in Portuguese.
-- Retrieve the corresponding full-text documents.
-- Convert PDF files to TXT.
-- Generate BM25 similarity rankings.
+Este projeto coleta 32 artigos de revisão sistemática do domínio biomédico a partir do SciELO Brasil e SciELO Portugal, baixa seus metadados em formato XML, analisa as referências bibliográficas em português, recupera os documentos completos, converte os arquivos PDF para TXT e gera rankings de similaridade utilizando BM25.
 
 ## Scripts
 
-- `baixar2_xmls.py` – Downloads XML files from SciELO.
-- `analisar_referencias.py` – Identifies the language of references.
-- `extrair_referencias.py` – Extracts Portuguese references.
-- `pdf_to_txt.py` – Converts PDF files to TXT.
-- `bm25.py` – Generates BM25 rankings.
+### `baixar2_xmls.py`
+Baixa os metadados dos artigos em formato XML. Adiciona 3 tentativas por artigo e ignora arquivos já existentes, evitando downloads duplicados.
 
-## Requirements
+### `analisar_referencias.py`
+Analisa os XMLs e conta quantas referências de cada artigo são em português, inglês ou outros idiomas. Suporta o formato do SciELO Brasil e do SciELO Portugal. Gera `analise_referencias.xlsx`.
 
-- Python 3
-- pandas
-- requests
-- beautifulsoup4
-- lxml
-- rank-bm25
+### `extrair_referencias_pt.py`
+Extrai as referências em português dos XMLs, recupera seus títulos e organiza os resultados em ordem alfabética. Gera `referencias_pt.xlsx`.
 
-## Example Outputs
+### `pdf_to_txt.py`
+Converte os documentos em PDF para arquivos TXT utilizados na construção do corpus.
 
-- `analise_referencias.xlsx`
-- `referencias_pt.xlsx`
-- `ranking_bm25_ate11.xlsx`
+### `bm25.py`
+Gera rankings de similaridade entre os documentos utilizando o algoritmo BM25. Gera `ranking_bm25.xlsx`.
+
+## Dependências
+
+```bash
+pip install requests openpyxl langdetect rank-bm25
+```
+
+## Fonte dos dados
+
+- [SciELO Brasil](https://search.scielo.org/)
+- [SciELO Portugal](https://scielo.pt/)
+- API utilizada: [SciELO ArticleMeta](https://articlemeta.scielo.org/)
